@@ -1,0 +1,12 @@
+# Mayhem target: rarfile RAR archive parser (Atheris/libFuzzer harness).
+# The cmd binary is the compiled ELF launcher that drives mayhem/fuzz_rar.py; Atheris instruments
+# the rarfile module so the run records coverage (edges). Mirrors the original mayhemheroes
+# fuzz-rar target (RarFile(...) + infolist()), now in the spec-v2 two-branch layout.
+project: savantenvs/rarfile
+target: fuzz-rar-buggy-mhh-run-4
+
+# origin: https://app.mayhem.security/mayhemheroes/rarfile/fuzz-rar/4
+
+cmds:
+  - cmd: /mayhem/fuzz-rar
+    libfuzzer: true
