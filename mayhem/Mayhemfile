@@ -1,0 +1,13 @@
+# Mayhem target: rarfile RAR archive parser (Atheris/libFuzzer harness).
+# The cmd binary is the compiled ELF launcher that drives mayhem/fuzz_rar.py; Atheris instruments
+# the rarfile module so the run records coverage (edges). Mined target for the PipeReader short-read fix: the harness synthesizes
+# RAR3 archives and reads every entry (stored via DirectReader, compressed via unrar PipeReader).
+project: savantenvs/rarfile
+target: fuzz-rar-mined-30650df
+
+cmds:
+  - cmd: /mayhem/fuzz-rar
+    libfuzzer: true
+
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
